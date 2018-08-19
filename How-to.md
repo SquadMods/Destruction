@@ -9,9 +9,8 @@
 
 #### World Setting setup
 1. Set the game mode to BP_GameMode_Destruction 
-2. Set the attackers team to gamemode-specific version (Currently there is only US faction supported as attackers, so use BP_TeamInfo_D_USA) 
-3. Place gamemode-specific version of ammocrates at the main bases (Currently only US team supported, so use BP_US_Ammocrate_D) 
-4. Set tickets amount for each team. Recommended values are 350 for attackers and 1000 for defenders. 
+2. Set the attackers team to be the Team One (due to limitation in the ruleset code, will be fixed eventually) 
+3. Set tickets amount for each team. Recommended values are 350 for attackers and 1000 for defenders. 
 
 #### Objectives setup 
 1. Set up each ObjectiveArea actor. Things you will need to change:  
@@ -30,7 +29,8 @@ You will need to tune this value based on your placement of possible cache spots
 Assign cache spawn locations to objectives by adding the value of "Objective Tag" property of corresponding ObjectiveArea actor to "Tag" property of spawn location actors.  
   
 3. Set up the NoDeployZone actors, by:  
-- setting the "Disallowed Team" to the value that corresponds to Attackers team  
+- setting the "Use blacklist" checkbox to true
+- adding the blueprint classes of the attackers deployables (usually only the attacking team version of the FOB) into array of restricted assets
 - setting the "Remove on Phase" to the number of phase, at which it should be removed. You'd want this to be at least 2.  
 - setting the "AreaBorder" to reference the the BP_DrawedSpline, that represents the border of this NoDeployZone on the map.  
   
